@@ -1,10 +1,10 @@
 # vue-dashboard-app
 
 
-![Alt text](https://github.com/TTeRzY/Vue-TheStockTrader/blob/master/vue-dashboard-charts.png "Vue - Dashboard Home")
+![Alt text](https://github.com/TTeRzY/vue-dashboard/blob/master/vue-dashboard-charts.png "Vue - Dashboard Charts ")
 
 
-![Alt text](https://github.com/TTeRzY/Vue-TheStockTrader/blob/master/vue-dashboard.png "Vue - Dashboard Charts ")
+![Alt text](https://github.com/TTeRzY/vue-dashboard/blob/master/vue-dashboard.png "Vue - Dashboard Home")
 
 ## Build Setup
 
