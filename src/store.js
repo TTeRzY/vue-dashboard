@@ -75,6 +75,8 @@ export default new Vuex.Store({
 
     },
     login ({commit, dispatch}, authData) {
+      let setUserName = authData.getFirstName[0];
+      localStorage.setItem('userName', setUserName);
       axios.post('/verifyPassword?key=AIzaSyAjiWKp_fAJSEEnKTnEBthYPw_SXeaBtR8', {
         email: authData.email,
         password: authData.password,
@@ -102,6 +104,7 @@ export default new Vuex.Store({
       localStorage.removeItem('expireIn');
       localStorage.removeItem('token');
       localStorage.removeItem('userId');
+      localStorage.removeItem('userName');
       router.replace('/signin')
     },
     storeUser({commit, state}, userData){
@@ -118,6 +121,8 @@ export default new Vuex.Store({
       }
       globalAxios.get('/users.json' + '?auth=' + state.idToken)
         .then(res => {
+
+          console.log(res.data)
           const data = res.data;
           const users = [];
           for (let key in data) {

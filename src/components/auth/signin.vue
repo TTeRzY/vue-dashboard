@@ -29,7 +29,8 @@
     data () {
       return {
         email: '',
-        password: ''
+        password: '',
+        getFirstName: []
       }
     },
     methods: {
@@ -37,6 +38,13 @@
         const formData = {
           email: this.email,
           password: this.password,
+          getFirstName: this.getFirstName
+        };
+        let getName = this.$store.getters.user;
+        for(var key in getName){
+          if(getName[key].email === this.email){
+            this.getFirstName.push(getName[key].firstName);
+          }
         }
         this.$store.dispatch('login', formData)
       }

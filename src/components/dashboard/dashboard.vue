@@ -1,14 +1,26 @@
 <template>
   <div class="container-fluid" id="dashboard">
    <div class="row">
-     <div class="col-lg-2">
+     <div class="col-lg-2" :class="{smallSidebar: sidebarWidth}">
+       <button class="btn btn-default sidebar-btn" @click="sidebarWidth = !sidebarWidth">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 21">
+           <g id="Group_94" data-name="Group 94" transform="translate(-312.083 -131.917)">
+             <rect id="Rectangle_42" data-name="Rectangle 42" class="cls-1" width="25" height="5" transform="translate(312.083 131.917)"></rect>
+             <rect id="Rectangle_47" data-name="Rectangle 47" class="cls-1" width="25" height="5" transform="translate(312.083 139.917)"></rect>
+             <rect id="Rectangle_48" data-name="Rectangle 48" class="cls-1" width="25" height="5" transform="translate(312.083 147.917)"></rect>
+           </g>
+         </svg>
+       </button>
+
        <div class="wrapper">
          <!-- Sidebar -->
-         <nav id="sidebar">
+         <nav class="sidebar" >
            <div class="sidebar-header">
              <div class="logo">
-               <p v-for="(key, index) in email">
-                 <span v-if="key.email === loggedName">Hello, <span class="big-name">{{ key.firstName }}</span></span>
+                 <img class="img-fluid" src="../../assets/userlogo.png" alt="UserLogo">
+               <p>
+                  Hello,
+                 <span class="big-name">{{ userName }}</span>
                </p>
              </div>
            </div>
@@ -25,6 +37,7 @@
 
          </nav>
        </div>
+
      </div>
 
      <div class="charts-components">
@@ -42,7 +55,8 @@
       return {
         selectedComponent: 'appHome',
         loggedName: this.$store.state.userEmail,
-        firstName: ''
+        userName: localStorage.getItem('userName'),
+        sidebarWidth: false
       }
     },
     components: {
@@ -52,6 +66,11 @@
     computed: {
       email () {
         return !this.$store.getters.user ? false : this.$store.getters.user;
+      },
+      collapseSidebar() {
+        return {
+          smallSidebar: this.sidebarWidth
+        }
       }
     },
     created () {
@@ -73,8 +92,8 @@
     width: 100%;
   }
 
-  #sidebar {
-    width: 250px;
+
+  .sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -85,7 +104,7 @@
     transition: all 0.3s;
   }
 
-  #sidebar{
+  .sidebar{
     position: fixed;
     height: 100vh;
     background: #393836;
@@ -93,6 +112,27 @@
     left: 0;
     width: 200px;
     overflow: hidden;
+    transition: ease-in-out 0.5s;
+  }
+
+
+  .smallSidebar .sidebar{
+    width: 70px;
+    transition: ease-in-out 0.5s;
+  }
+
+  .smallSidebar .sidebar .big-name{
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .smallSidebar .sidebar .sidebar-header{
+    width: 100%;
+    padding: 5px;
+  }
+
+  .smallSidebar .sidebar .side-navbar p{
+    margin-left: 0;
   }
 
   .sidebar-header{
@@ -149,5 +189,24 @@
     background: #33b35a;
     color: #fff;
     text-decoration: none;
+  }
+
+  .sidebar-btn{
+    color: #ffffff;
+    position: absolute;
+    right: 40px;
+    top: -50px;
+    z-index: 9;
+    background: inherit;
+    transition: ease-in-out 0.5s;
+  }
+
+  .smallSidebar .sidebar-btn{
+    right: 170px;
+    transition: ease-in-out 0.5s;
+  }
+  .sidebar-btn svg{
+    fill: #ffffff;
+    height: 21px;
   }
 </style>
