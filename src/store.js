@@ -35,6 +35,8 @@ export default new Vuex.Store({
       }, expirationTime * 1000)
     },
     signup({commit, dispatch}, authData) {
+      let setUserName = authData.firstName;
+      localStorage.setItem('userName', setUserName);
       axios.post('/signupNewUser?key=AIzaSyAjiWKp_fAJSEEnKTnEBthYPw_SXeaBtR8', {
         email: authData.email,
         password: authData.password,

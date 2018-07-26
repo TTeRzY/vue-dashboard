@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" id="dashboard">
+  <div class="container-fluid" id="dashboard" >
    <div class="row">
      <div class="col-lg-2" :class="{smallSidebar: sidebarWidth}">
        <button class="btn btn-default sidebar-btn" @click="sidebarWidth = !sidebarWidth">
@@ -14,7 +14,7 @@
 
        <div class="wrapper">
          <!-- Sidebar -->
-         <nav class="sidebar" >
+         <nav class="sidebar">
            <div class="sidebar-header">
              <div class="logo">
                  <img class="img-fluid" src="../../assets/userlogo.png" alt="UserLogo">
@@ -41,6 +41,7 @@
      </div>
 
      <div class="charts-components">
+
        <component :is="selectedComponent"></component>
      </div>
    </div>
@@ -67,7 +68,7 @@
       email () {
         return !this.$store.getters.user ? false : this.$store.getters.user;
       },
-      collapseSidebar() {
+      collapseSidebar(event) {
         return {
           smallSidebar: this.sidebarWidth
         }
@@ -87,27 +88,16 @@
   p {
     color: red;
   }
-  .wrapper {
-    display: flex;
+  .charts-components{
     width: 100%;
   }
 
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    background: #7386D5;
-    color: #fff;
-    transition: all 0.3s;
-  }
-
   .sidebar{
+    display: none;
     position: fixed;
     height: 100vh;
     background: #393836;
+    z-index: 999;
     top: 0;
     left: 0;
     width: 200px;
@@ -115,31 +105,12 @@
     transition: ease-in-out 0.5s;
   }
 
-
   .smallSidebar .sidebar{
-    width: 70px;
+    display: block;
     transition: ease-in-out 0.5s;
   }
 
-  .smallSidebar .sidebar .big-name{
-    font-size: 16px;
-    text-align: center;
-  }
 
-  .smallSidebar .sidebar .sidebar-header{
-    width: 100%;
-    padding: 5px;
-  }
-
-  .smallSidebar .sidebar .side-navbar p{
-    margin-left: 0;
-  }
-
-  .sidebar-header{
-    background: #292929;
-    padding: 20px;
-    margin-bottom: 15px;
-  }
 
   .logo p{
     color: #ffffff;
@@ -194,19 +165,67 @@
   .sidebar-btn{
     color: #ffffff;
     position: absolute;
-    right: 40px;
     top: -50px;
-    z-index: 9;
+    left: 0;
+    z-index: 9999;
     background: inherit;
     transition: ease-in-out 0.5s;
   }
 
-  .smallSidebar .sidebar-btn{
-    right: 170px;
-    transition: ease-in-out 0.5s;
-  }
   .sidebar-btn svg{
     fill: #ffffff;
     height: 21px;
+  }
+
+  #dashboard{
+    background: #F4F7FA;
+  }
+
+  @media only screen and (min-width: 1160px) {
+
+    .charts-components{
+      width: 80%;
+      margin: auto;
+    }
+
+
+    .sidebar{
+      display: block;
+    }
+
+    .sidebar-btn{
+      left: auto;
+      right: 40px;
+    }
+
+    .smallSidebar .sidebar{
+      width: 70px;
+      transition: ease-in-out 0.5s;
+    }
+
+    .smallSidebar .sidebar .big-name{
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .smallSidebar .sidebar .sidebar-header{
+      width: 100%;
+      padding: 5px;
+    }
+
+    .smallSidebar .sidebar .side-navbar p{
+      margin-left: 0;
+    }
+
+    .sidebar-header{
+      background: #292929;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+
+    .smallSidebar .sidebar-btn{
+      right: 170px;
+      transition: ease-in-out 0.5s;
+    }
   }
 </style>

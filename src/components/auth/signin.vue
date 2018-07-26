@@ -1,6 +1,6 @@
 <template>
-  <div id="signin">
-    <div class="signin-form">
+  <div class="container" id="signin">
+    <div class="col-lg-4 signin-form">
       <form @submit.prevent="onSubmit">
         <div class="input">
           <label for="email">Mail</label>
@@ -54,7 +54,6 @@
 
 <style scoped>
   .signin-form {
-    width: 400px;
     margin: 30px auto;
     border: 1px solid #eee;
     padding: 20px;

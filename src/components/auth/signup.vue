@@ -1,6 +1,6 @@
 <template>
-  <div id="signup">
-    <div class="signup-form">
+  <div id="signup" class="container">
+    <div class="col-lg-4 signup-form">
       <form @submit.prevent="onSubmit">
         <div class="input">
           <label for="firstName">First Name</label>
@@ -62,11 +62,14 @@
           confirmPassword: this.confirmPassword,
           firstName: this.firstName,
           terms: this.terms
-        }
+        };
 
         //Simple check if passwords matches
         if(this.password !== this.confirmPassword){
           alert("Passwords doesn't match!")
+        }
+        else if(this.password.length < 6){
+          alert('The password should be minimum 6 characters')
         }
         this.$store.dispatch('signup', formData)
       }
@@ -76,7 +79,6 @@
 
 <style scoped>
   .signup-form {
-    width: 400px;
     margin: 30px auto;
     border: 1px solid #eee;
     padding: 20px;

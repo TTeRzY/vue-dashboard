@@ -1,25 +1,29 @@
 <template>
-  <header id="header">
-    <div class="logo" v-if="!authUser">
-      <router-link to="/">Vue - Dashboard</router-link>
+  <div class="container-fluid">
+    <div class="row">
+      <header id="header">
+        <div class="logo" v-if="!authUser">
+          <router-link to="/">Vue - Dashboard</router-link>
+        </div>
+        <nav class="ml-auto">
+          <ul>
+            <li v-if="!authUser">
+              <router-link to="/signup">Sign Up</router-link>
+            </li>
+            <li v-if="!authUser">
+              <router-link to="/signin">Sign In</router-link>
+            </li>
+            <li v-if="authUser">
+              <router-link to="/dashboard">Dashboard</router-link>
+            </li>
+            <li v-if="authUser">
+              <button @click="onLogout" class="logout">Logout</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
     </div>
-    <nav class="ml-auto">
-      <ul>
-        <li v-if="!authUser">
-          <router-link to="/signup">Sign Up</router-link>
-        </li>
-        <li v-if="!authUser">
-          <router-link to="/signin">Sign In</router-link>
-        </li>
-        <li v-if="authUser">
-          <router-link to="/dashboard">Dashboard</router-link>
-        </li>
-        <li v-if="authUser">
-          <button @click="onLogout" class="logout">Logout</button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -45,6 +49,7 @@
     align-items: center;
     background-color: #393836;
     padding: 0 20px;
+    width: 100%;
   }
 
   .logo {
@@ -85,7 +90,7 @@
   li a:hover,
   li a:active,
   li a.router-link-active {
-    color: ;
+    color: rgba(143,111,21,120.4);
     font-weight: 700;
   }
 
@@ -95,5 +100,15 @@
     font: inherit;
     color: #ffffff;
     cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .logo{
+      font-size: 15px;
+    }
+
+    li a{
+      font-size: 12px;
+    }
   }
 </style>

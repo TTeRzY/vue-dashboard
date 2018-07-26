@@ -1,6 +1,6 @@
 <template>
    <div class="charts-holder">
-       <div class="charts col-lg-9 ml-auto mr-auto">
+       <div class="charts col-lg-12 ml-auto mr-auto">
            <h2>Charts</h2>
            <div class="row">
                <div class="col-lg-6 chart-content">
