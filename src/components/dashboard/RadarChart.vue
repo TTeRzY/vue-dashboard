@@ -1,6 +1,6 @@
 <template>
     <div class="chart-card">
-        <h2 class="text-center">Bar Chart Example</h2>
+        <h2 class="text-center">Radar Chart Example</h2>
         <hr>
         <canvas id="radar-chart"></canvas>
     </div>

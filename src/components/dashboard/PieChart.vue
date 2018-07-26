@@ -1,6 +1,6 @@
 <template>
     <div class="chart-card">
-        <h2 class="text-center">Vue.js Popularity on Github</h2>
+        <h2 class="text-center">Total share of the cryptocurrencies in percents</h2>
         <hr>
         <canvas id="pie-chart"></canvas>
     </div>

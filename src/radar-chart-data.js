@@ -3,16 +3,16 @@ export const radarChart = {
   data: {
     labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
     datasets: [{
-      label: 'apples',
+      label: 'Player1',
       backgroundColor: "rgba(153,255,51,0.4)",
       borderColor: "rgba(153,255,51,1)",
-      data: [76,56, 50, 72]
+      data: [76,56, 10, 72]
     },
       {
-        label: 'orange',
-        backgroundColor: "orange",
+        label: 'Player2',
+        backgroundColor: "rgba(0,0,0,0.4)",
         borderColor: "#ddd",
-        data: [36,26, 93, 72]
+        data: [66,96, 93, 72]
       }]
   }
 }

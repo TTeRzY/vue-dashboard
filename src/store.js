@@ -57,14 +57,14 @@ export default new Vuex.Store({
         })
         .catch(error => console.log(error))
     },
-    autoLogin({commit}){
+    autoLogin({commit}) {
       const token = localStorage.getItem('token');
-      if(!token){
+      if (!token) {
         return
       }
       const expirationDate = localStorage.getItem('expireIn');
       const now = new Date();
-      if(now >= expirationDate){
+      if (now >= expirationDate) {
         return
       }
       const userId = localStorage.getItem('userId');
@@ -74,7 +74,7 @@ export default new Vuex.Store({
       })
 
     },
-    login ({commit, dispatch}, authData) {
+    login({commit, dispatch}, authData) {
       let setUserName = authData.getFirstName[0];
       localStorage.setItem('userName', setUserName);
       axios.post('/verifyPassword?key=AIzaSyAjiWKp_fAJSEEnKTnEBthYPw_SXeaBtR8', {
@@ -107,22 +107,20 @@ export default new Vuex.Store({
       localStorage.removeItem('userName');
       router.replace('/signin')
     },
-    storeUser({commit, state}, userData){
-      if(!state.idToken){
+    storeUser({commit, state}, userData) {
+      if (!state.idToken) {
         return
       }
       globalAxios.post('/users.json' + '?auth=' + state.idToken, userData)
         .then(res => console.log(res))
         .catch(error => console.log(error))
     },
-    fetchUser({commit, state}){
-      if(!state.idToken){
+    fetchUser({commit, state}) {
+      if (!state.idToken) {
         return
       }
       globalAxios.get('/users.json' + '?auth=' + state.idToken)
         .then(res => {
-
-          console.log(res.data)
           const data = res.data;
           const users = [];
           for (let key in data) {
