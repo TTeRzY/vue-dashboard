@@ -1,5 +1,9 @@
 # vue-dashboard
 
+![Alt text](https://github.com/TTeRzY/vue-dashboard/blob/master/src/assets/vue-dashboard3.png "Vue - Dashboard")
+
+![Alt text](https://github.com/TTeRzY/vue-dashboard/blob/master/src/assets/vue-dashboard4.png "Vue - Dashboard")
+
 
 ## Build Setup
 
